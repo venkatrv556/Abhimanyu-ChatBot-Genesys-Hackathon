@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <meta charset="UTF-8"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
+
+    <title>Home</title>
+</head>
+<style>
+    body
+    {
+        height:100vh;
+        width:100vw;
+        margin:0;
+        padding:0;
+        position:relative;
+        background-image: url("blank-business-composition-computer-373076.jpg");
+        background-size:cover;
+        background-position:center;
+        font-family: 'Yanone Kaffeesatz' ;
+
+    }
+    .clippath
+    {
+        position:absolute;
+        top:0;
+        left:0;
+        height:100%;
+        width:100%;
+        clip-path: polygon(0 0, 56% 0, 82% 0, 56% 100%, 46% 100%, 0 100%, 0% 75%);
+        background-color:rgba(110, 231, 110, 0.705);
+        z-index:3;
+    }
+  button {
+    display: block;
+    width: 25%;
+    margin: 5px 0 0 37% ;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  h2 {
+    display: none;
+    margin: 0;
+  }
+  
+  p.target {
+    display: none;
+    margin-top: 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+    .container
+    {
+        height:100%;
+        width:100%;
+        padding:0;
+        justify-content: center;
+        align-items: center;
+        position:relative;
+        /* background:linear-gradient(-120deg,#4285f4,#34A853,#FBBC05,#EA4335); */
+    }
+    .window
+    {
+        height:90%;
+        width:32%;
+        position:absolute;
+        top:5%;
+        left:50%;
+        padding-top:1.5%;
+        box-sizing: border-box;
+        border-radius: 5% 5% 5% 5%;
+        box-shadow: 5px 5px 30px rgba(0,0,0,1);
+        background-color:white;
+        background-size: cover;
+        background-position: right;
+        overflow: hidden;
+        overflow-y:auto;
+        position:relative;
+        z-index: 4;
+    }
+    .window>.mess
+    {
+        height:auto;
+        width:60%;
+        background-color:rgb(212, 209, 201);
+        border-radius:5px;
+        color:black;
+        word-wrap: break-word;
+        font-size:1.4em;
+        position:relative;
+        padding:1.5%;
+        box-sizing: border-box;
+        margin:0 5% 2.5% 35%;
+        box-shadow: 5px 5px 5px rgba(0,0,0,.5);
+        }
+    .window::-webkit-scrollbar 
+    {
+         width: 2px !important
+     }
+    .input_chat
+    {
+        position: absolute;
+        top:55%;
+        left:5%;
+        height:19%;
+        width:40%;
+        padding:0;
+        z-index: 4;
+        box-shadow: 10px 10px 30px rgba(4, 10, 1, 0.74);
+    }
+    .input_chat>form{
+        height:100%;
+        width:100%;
+        padding:0;
+        background-color: aqua;
+    }
+    form>input[type=text]
+    {
+        width:96%; 
+        height:45%;
+        margin:1.25% 2% 0 ;
+        border:0;
+        border-radius: 20px;;
+        font-size: 1.5em;
+        z-index: 5;
+        
+    }
+    .enable_chating
+    {
+        position:fixed;
+        top:78%;
+        left:90%;
+        height:15%;
+        width:7%;
+        border-radius:50%;
+        background-color: fuchsia;
+        box-shadow: 0px 0px 30px rgba(0,0,0,0.9);
+
+    }
+    i
+    {
+        height:82%;
+        width:5%;
+        margin: 0 3%;
+        font-size:2em;
+        color:white;
+        z-index: 5;
+        text-align: center;
+    }
+    .fa-paper-plane:hover
+    {
+        font-size:2.3em;
+        /* float:right; */
+        border-radius:50%;
+        color:  #FF3424;
+    }
+    .fa-microphone-alt
+    {
+        height:83%;
+        width:10%;
+        margin-left:1%;
+        font-size:2em;
+        color:white;
+        z-index: 5;
+    }
+    .fa-microphone-alt:hover
+    {
+        color:  #FF3424;
+        
+    }
+    .widgets
+    {
+        height:50%;
+        width:80%;
+        margin:2%;
+    }
+    #submit
+    {
+        display:none;
+    }
+    .know_mess
+    {
+        width:85%;
+        height:auto;
+        margin:2.5% 0 2.5% 2%;
+        padding:1.5%;
+        background-color:beige;
+        color:black;
+        word-wrap: break-word;
+        font-size: 1.3em;
+        box-sizing: border-box;
+        border-radius:5px;
+        box-shadow:10px 10px 30px rgba(0,0,0,.5);
+        background-color:rgb(245, 208, 110);
+    }
+    .givefeedback,.endchat,.meetagent
+    {
+        position:absolute;
+        height:7%;
+        width:13%;
+        top:40%;
+        border:1px solid black;;
+        border-radius:25px;
+        margin:2%;
+        z-index: 5;
+        background: linear-gradient(to right, #ff8008, #ffc837); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        /* background: linear-gradient(to right, #2bc0e4, #eaecc6); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        text-align:center;
+        font-size:1em;
+        color:white;
+
+    }
+    .endchat
+    {
+        left:7%;
+    }
+    .meetagent
+    {
+        left:23%;
+    }
+    .end
+    {
+        height:auto;
+        width:60%;
+        background-color:rgb(212, 209, 201);
+        border-radius:5px;
+        color:black;
+        word-wrap: break-word;
+        font-size:1.4em;
+        position:absolute;
+        top:80%;
+        left:-5%;
+        padding:1.5%;
+        box-sizing: border-box;
+        margin:0 5% 2.5% 35%;
+        box-shadow: 5px 5px 20px rgba(0,0,0,.5);
+    }
+</style>
+<body>
+    <button class="endchat"> 
+        Endchat?
+    </button> 
+    <button class="meetagent">
+        Want to meet agent?
+    </button>
+   <div class="clippath"></div>
+   <div class="container">
+    <div class="input_chat">
+        <form method="POST">
+            <input type="text" name="chat_input" >
+            <div class="widgets">
+            <label for="audio">
+                <i class="fas fa-microphone-alt"></i>
+            </label>
+            <label for ="submit">
+                <input type="button" id="submit">
+                <i class="fas fa-paper-plane"></i>
+            </label>
+            </div>
+        </form>
+    </div>
+       <div class="window"> 
+            <p class = "mess">Hi! THIS IS "ABHIMANYU"!YOUR PERSONAL GUIDE(A SORT OF). WANT TO DEPLOY THIS IN YOUR APPLICATION <a href="https://www.vamsibhavani.blogspot.com">CLICK HERE</a></p>
+       </div>
+
+   </div>
+   <script>
+       $(document).ready(function(){
+            var initial_flag = false
+                try {
+                var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                var recognition = new SpeechRecognition();
+                }
+                catch(e) {
+                console.error(e);
+                }
+            
+            $(".endchat").on("click",function(){
+                $("input[type = \"text\"]").prop("disabled",true);
+                $(".window").append("<p class=\"end\">Thanks for using our chatbot .Please feel free to give feedback it means a lot for us.<a href=\"https://docs.google.com/forms/d/e/1FAIpQLSfeRXuVBUS4LAvLoVtRJl6kOK8WDoHlzcJ11K5TCIO6WpExgw/viewform?vc=0&c=0&w=1\">Feedback</a></p>")
+                alert("Thanks for giving us a chance to serve with our atmost AI technology!")
+            })
+            $(".meetagent").on("click",function(){
+               alert("Our agent will here from you soon!Thanks for spending time.")
+            });
+            $("input[type=\"button\"]").on("click",function(e)
+            {
+                var input = $("input[type=\"text\"]").val();
+                if(input!='')
+                {
+                    $("input[type=\"text\"]").val('');
+                    var setting = {
+                    url:"http://127.0.0.1:8080/translate/"+input,
+                    type:"GET",
+                }
+                var resp_global;
+                $.ajax(setting).done(function(resp){
+                    resp_global = resp;
+                    console.log(resp_global)
+                    $(".window").append("<p class=\"mess\">"+resp["orilan"]+"</p>");
+                });
+                setTimeout(function(){ 
+                    var settings_know = {
+                        url:" http://127.0.0.1:8080/know/"+resp_global["eng"],
+                        type:"GET",
+                    }
+                    var lang = resp_global['lang'];
+                    $.ajax(settings_know).done(function (response) {
+                        console.log(response)
+                        var lang = resp_global['lang'];
+                        var settings_knowle = {
+                        url:" http://127.0.0.1:8080/translate2/"+lang+"/"+response["results"][0]["faq"]["answer"],
+                        type:"GET",
+                    }
+                        $.ajax(settings_knowle).done(function(respp)
+                        {
+                            $(".window").append("<p class=\"know_mess\">"+respp['data']+"</p>");
+                        })
+                        }); }, 5000);
+                
+                }
+                else
+                {
+                    alert("Please fill in the input field before sending the request");
+                }
+            });     
+        var noteContent = '';
+            recognition.onresult = function(event) {
+                console.log("It inside the onresult of the recognition")
+            var current = event.resultIndex;
+            var transcript = event.results[current][0].transcript;
+            noteContent += transcript;    
+            }
+            recognition.onstart = function() { 
+            console.log('Voice recognition activated. Try speaking into the microphone.');
+            }
+
+            recognition.onspeechend = function() {
+            console.log('You were quiet for a while so voice recognition turned itself off.');
+            }
+
+            recognition.onerror = function(event) {
+            if(event.error == 'no-speech') {
+                console.log('No speech was detected. Try again.');  
+            };
+            }   
+            $(".fa-microphone-alt").on("click",function(e)
+            {
+                console.log("It is inside")
+                        
+                if(!initial_flag)
+                {
+                    if(noteContent)
+                    {
+                        noteContent = ''
+                    }
+                    initial_flag = true;
+                    console.log(noteContent)
+                recognition.start();
+                }
+                else
+                {
+                console.log(noteContent);
+                var setting = {
+                    url:"http://127.0.0.1:8080/translate/"+noteContent,
+                    type:"GET",
+                }
+                
+                $.ajax(setting).done(function(resp){
+                    $(".window").append("<p class=\"mess\">"+resp["orilan"]+"</p>");
+                    console.log(resp["orilan"]);
+                    setTimeout(function(){ 
+                    var settings_know = {
+                        url:" http://127.0.0.1:8080/know/"+resp["eng"],
+                        type:"GET",
+                    }
+                    var lang = resp["lang"]
+                    $.ajax(settings_know).done(function (response) {
+                        console.log(response)
+                        var settings_knowle = {
+                        url:" http://127.0.0.1:8080/translate2/"+lang+"/"+response["results"][0]["faq"]["answer"],
+                        type:"GET",
+                        fail: function(xhr, textStatus, errorThrown){
+                            alert('request failed');
+                        }
+
+                    }
+                        $.ajax(settings_knowle).done(function(respp)
+                        {
+                            $(".window").append("<p class=\"know_mess\">"+respp['data']+"</p>");
+                        })
+                        }); }, 5000);
+                
+                })
+                initial_flag = false
+                recognition.stop()
+                }
+            })
+       })
+   </script>
+
+</body>
+</html>
